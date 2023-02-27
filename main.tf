@@ -148,3 +148,11 @@ resource "aws_route53_record" "app" {
   records = [var.alb]
 }
 
+resource "aws_lb_target_group" "target_group" {
+  name     = "${var.component}-${var.env}"
+  port     = var.app_port
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+}
+
+
